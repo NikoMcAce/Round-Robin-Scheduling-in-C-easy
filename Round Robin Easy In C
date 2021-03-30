@@ -1,0 +1,80 @@
+#include<stdio.h>
+#include<stdlib.h>
+void show (int job[4][5],int jobs);
+int max_time (int job[4][5],int jobs);
+int check (int job[4][5],int jobs);
+int main ()
+{
+    system("clear");
+    int jobs=4,job[4][5]=
+    {
+        {0,8,8,0,0},
+        {1,4,4,0,0},
+        {2,9,9,0,0},
+        {3,5,5,0,0}
+    };
+    int i=0;
+    printf("Max time taken will be : %d\n\n",max_time(job,jobs));
+    int time=0,comptime=0,c=0,tq=3;
+    while (check(job,jobs))
+    {   
+        l:
+        if (c==jobs)
+            c=0;
+        if (job[c][0]<=time && job[c][2]!=0)
+        {
+            if (job[c][2]>tq)
+            {
+                job[c][2]=job[c][2]-tq;
+                time+=tq;
+                c++;
+                goto l;
+            }
+            if (job[c][2]<=tq)
+            {
+                time=time+job[c][2];
+                job[c][2]=0;
+                job[c][3]=time;
+                job[c][4]=job[c][3]-job[c][0];
+                c++;
+            }
+        }
+        else
+            c++;
+        //show (job,jobs);
+    }
+    printf("\n\n");
+    show (job,jobs);
+    printf("\n");
+    return 0;
+}
+
+void show (int job[4][5],int jobs)
+{
+    int i;
+    printf("Name\tArrival time\tBurst time\tTime remaining\tComplete At time\tTAT\n");
+    printf("----------------------------------------------------------------------------------------\n");
+    for(i=0;i<jobs;i++)
+        {
+            printf(" P%d\t %d\t\t %d\t\t %d\t\t %d\t\t\t%d\n",i,job[i][0],job[i][1],job[i][2],job[i][3],job[i][4]);
+        }
+}
+
+int max_time (int job[4][5],int jobs)
+{
+    int i=0,t=0;
+    for (;i<jobs;i++)
+    t=t+job[i][1];
+    return t;
+}
+
+int check (int job[4][5],int jobs)
+{
+    int i =0;
+    for (i=0;i<jobs;i++)
+    {
+        if (job[i][2]!=0)
+            return 1;
+    }
+    return 0;
+}
