@@ -6,3 +6,7 @@ We increase the time by the specified time quantum and at the same time we deduc
 If the remaining time is smaller than the time quantum we add the remaining time to the time variable and set the remaining time to zero. 
 All of this happens only when the job has an arrival time less than or equal to current time and the remaining time is not zero.
 If that condition is not met then we consider the time to be Idle time and hence print idle at time t.
+
+
+**Made By Raj Davande **
+**-NikoMcAce**
