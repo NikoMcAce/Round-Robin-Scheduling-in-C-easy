@@ -8,5 +8,5 @@ All of this happens only when the job has an arrival time less than or equal to 
 If that condition is not met then we consider the time to be Idle time and hence print idle at time t.
 
 
-**Made By Raj Davande **
+**Made By Raj Davande**
 **-NikoMcAce**
